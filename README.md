@@ -1,10 +1,13 @@
 # Self signed SSL/TLS Certificates
 
-Learn with this tutorial how to create a self-signed certificate with OpenSSL.
+Learn with this tutorial how to create a self-signed certificate with OpenSSL
 
 - Private Key (*.key)
 - Certificate Signing Request (*.csr)
 - Self Signed Certificate (*.crt)
+
+#### Requirement
+[OpenSSL for Windows](https://slproweb.com/products/Win32OpenSSL.html)
 
 ---
 
@@ -13,6 +16,13 @@ Learn with this tutorial how to create a self-signed certificate with OpenSSL.
 create a password-protected, AES128 encrypted, 4096-bit RSA private key 
 ```
 openssl genrsa -aes128 -out MyServer.key 4096
+```
+
+### remove passphrase from Private Key
+
+for compatibility reasons with web server passphrase must be removed
+```
+openssl rsa -in MyServer.key -out MyServer.key
 ```
 
 ### create Certificate Signing Request

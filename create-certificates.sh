@@ -12,7 +12,8 @@ openssl verify -CAfile RootCA.crt IntermediateCA.crt
 
 echo create mypage.com certificate
 openssl genrsa -aes128 -passout pass:PwdSrvCrt -out mypage.com.key 4096
-openssl req -new -sha256 -config ./config/mypage.com.cfg -passin pass:PwdSrvCrt -key mypage.com.key -out mypage.com.csr
+openssl rsa -in mypage.com.key -passin pass:PwdSrvCrt -out mypage.com.key
+openssl req -new -sha256 -config ./config/mypage.com.cfg -key mypage.com.key -out mypage.com.csr
 openssl x509 -req -days 365 -extfile ./config/mypage.com.cfg -extensions v3_server_cert -in mypage.com.csr -CAcreateserial -CA IntermediateCA.crt -CAkey IntermediateCA.key -passin pass:PwdIntermediateCA -out mypage.com.crt
 openssl verify -CAfile RootCA.crt -untrusted IntermediateCA.crt mypage.com.crt
 
