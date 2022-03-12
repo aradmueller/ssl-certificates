@@ -1,5 +1,7 @@
 # Self signed SSL/TLS Certificates
 
+Learn with this tutorial how to create a self-signed certificate with OpenSSL.
+
 - Private Key (*.key)
 - Certificate Signing Request (*.csr)
 - Self Signed Certificate (*.crt)
