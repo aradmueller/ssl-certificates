@@ -27,3 +27,9 @@ create a certificate that's signed with its own private key
 openssl x509 -req -days 365 -signkey MyServer.key -in MyServer.csr -out MyServer.crt
 ```
 
+### review Self Signed Certificate
+
+show the contents of the certificate in plain text:
+```
+openssl x509 -text -noout -in MyServer.crt
+```
